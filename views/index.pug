@@ -1,0 +1,51 @@
+doctype html
+html
+  head
+    title Artist and Artwork Portfolio
+    link(rel='stylesheet', href='/css/styles.css')
+  body
+    h1 Welcome to the Artist and Artwork Portfolio
+
+    // Main container for artists and artworks
+    .container
+      // Artists List
+      .artists
+        h2 Artists
+        ul
+          each artist in artists
+            li #{artist.name} - #{artist.bio} - #{artist.email}
+
+        // Add Artist Form
+        h2 Add Artist
+        form(action='/add-artist', method='POST')
+          label(for='name') Name:
+          input(type='text', name='name', required=true)
+          br
+          label(for='bio') Bio:
+          textarea(name='bio', required=true)
+          br
+          label(for='email') Email:
+          input(type='email', name='email', required=true)
+          br
+          button(type='submit') Add Artist
+
+      // Artworks List
+      .artworks
+        h2 Artworks
+        ul
+          each artwork in artworks
+            li #{artwork.title} - #{artwork.description} - #{artwork.year}
+
+        // Add Artwork Form
+        h2 Add Artwork
+        form(action='/add-artwork', method='POST')
+          label(for='title') Title:
+          input(type='text', name='title', required=true)
+          br
+          label(for='description') Description:
+          textarea(name='description', required=true)
+          br
+          label(for='year') Year:
+          input(type='number', name='year', required=true)
+          br
+          button(type='submit') Add Artwork
