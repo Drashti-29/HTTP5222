@@ -32,6 +32,25 @@ app.get("/", async (request, response) => {
 
   response.render("index", { artists: artistList, artworks: artworkList });
 });
+app.get("/artist", async (request, response) => {
+  const artistList = await db.getArtists();  // Get list of artists
+
+  if (!artistList.length) {
+    await db.initializeData();  // Initialize data if empty
+  }
+  response.json({ message: "Artist List ", artists: artistList });  // Return JSON response
+
+});
+app.get("/artwork", async (request, response) => {
+  const artworkList = await db.getArtworks();  // Get list of artworks
+
+  if (!artworkList.length) {
+    await db.initializeData();  // Initialize data if empty
+  }
+
+  response.json({ message: "Artwork List", artworks: artworkList });  // Return JSON response
+
+});
 
 // Route to add an artist
 app.post("/add-artist", async (request, response) => {
