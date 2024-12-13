@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title Add Artist
+    link(rel='stylesheet', href='/style.css') // Linking the CSS file
+  body
+    header
+      h1 Add Artist
+    .container
+      form(action='/admin/add-artist', method='POST')
+        label(for='name') Name:
+        input(type='text', id='name', name='name', required)
+
+        label(for='bio') Bio:
+        textarea(id='bio', name='bio', required)
+
+        label(for='email') Email:
+        input(type='email', id='email', name='email', required)
+
+        input(type='submit', value='Add Artist')
